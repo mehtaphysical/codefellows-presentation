@@ -1,0 +1,10 @@
+#!/bin/bash -ex
+
+VERSION=$(sh bin/get-version)
+HEROKU_REGISTRYS_URL=registry.heroku.com
+HEROKU_IMAGE_NAME=$HEROKU_REGISTRYS_URL/$HEROKU_APP_NAME/web
+
+echo "$HEROKU_API_KEY" | docker login -u "$HEROKU_DOCKER_USERNAME" $HEROKU_REGISTRYS_URL --password-stdin
+
+docker tag codefellows-presentation $HEROKU_IMAGE_NAME
+docker push $HEROKU_IMAGE_NAME

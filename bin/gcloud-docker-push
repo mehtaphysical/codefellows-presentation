@@ -1,0 +1,7 @@
+#!/bin/bash -ex
+
+VERSION=$(sh bin/get-version)
+CLOUDSDK_IMAGE_NAME=gcr.io/$CLOUDSDK_CORE_PROJECT/$CLOUDSDK_CORE_PROJECT:$VERSION
+
+docker tag codefellows-presentation $CLOUDSDK_IMAGE_NAME
+docker push $CLOUDSDK_IMAGE_NAME

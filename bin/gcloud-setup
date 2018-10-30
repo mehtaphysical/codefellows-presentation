@@ -1,0 +1,9 @@
+#!/bin/bash -ex
+
+gcloud --quiet components update kubectl
+echo $GCLOUD_KEY | base64 --decode > gcloud.json
+gcloud config set project $CLOUDSDK_CORE_PROJECT
+gcloud auth activate-service-account $GCLOUD_EMAIL --key-file gcloud.json
+ssh-keygen -f ~/.ssh/google_compute_engine -N ""
+gcloud auth configure-docker
+gcloud container clusters get-credentials $CLOUDSDK_CORE_PROJECT --zone $CLOUDSDK_COMPUTE_ZONE --project $CLOUDSDK_CORE_PROJECT

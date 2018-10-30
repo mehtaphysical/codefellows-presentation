@@ -1,0 +1,5 @@
+#!/bin/bash -ex
+
+VERSION=$(sh bin/get-version)
+
+kubectl set image deployment codefellows-presentation codefellows-presentation=gcr.io/codefellows-presentation/codefellows-presentation:$VERSION --record

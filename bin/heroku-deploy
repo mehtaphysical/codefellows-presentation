@@ -1,0 +1,13 @@
+#!/bin/bash -ex
+
+HEROKU_REGISTRYS_URL=registry.heroku.com
+HEROKU_IMAGE_NAME=$HEROKU_REGISTRYS_URL/$HEROKU_APP_NAME/web
+
+DOCKER_IMAGE_ID=$(docker inspect $HEROKU_IMAGE_NAME --format={{.Id}})
+
+curl -n -XPATCH \
+    -H "Authorization: Bearer $HEROKU_API_KEY" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/vnd.heroku+json; version=3.docker-releases" \
+    https://api.heroku.com/apps/codefellows-presentation/formation \
+    -d "{ \"updates\": [ { \"type\": \"web\", \"docker_image\": \"$DOCKER_IMAGE_ID\" } ] }"
