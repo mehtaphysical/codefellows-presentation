@@ -1,6 +1,6 @@
 FROM nginx
 
-COPY bin/start-ngin .
+COPY bin/start-nginx .
 
 COPY public /usr/share/nginx/html
 
