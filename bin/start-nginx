@@ -20,3 +20,5 @@ server {
     }
 }
 EOL
+
+nginx -g 'daemon off;'
