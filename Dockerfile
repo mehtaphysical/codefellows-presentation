@@ -1,9 +1,7 @@
-FROM node
+FROM nginx
 
-ENV NODE_ENV production
+COPY bin/start-ngin .
 
-COPY . .
+COPY public /usr/share/nginx/html
 
-RUN npm install
-
-CMD node index.js
+CMD ./start-nginx
