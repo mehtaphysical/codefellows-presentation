@@ -1,8 +1,8 @@
-const { createServer } = require('http')
+const { createServer } = require('http');
 
-const port = process.env.PORT || 7890
+const port = process.env.PORT || 7890;
 
 createServer((req, res) => {
-    res.end('READY!')
+    res.end('We are deploying!');
 }).listen(port,
-    () => console.log(`LISTENING ON ${port}`))
+    () => console.log(`LISTENING ON ${port}`));

@@ -13,6 +13,6 @@ after_success:
   - bin/gcloud-setup
   - bin/docker-build
   - bin/gcloud-docker-push
-  - bin/kubernates-deploy
+  - bin/kubernetes-deploy
   - bin/heroku-docker-push
   - bin/heroku-deploy
